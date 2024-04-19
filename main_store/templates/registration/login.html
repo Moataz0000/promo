@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+ 
+
+
+  <section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            <hgroup>
+                <h1 style="padding-bottom: 100px;margin-bottom: -56px;">Login </h1>
+                <h3 style="padding-bottom: 54px;padding-left: 44px;">Sell With Promo <lord-icon src="https://cdn.lordicon.com/eiekfffz.json" style="width: 67px;height: 51px;/* margin-top: 7px; */padding-top: 10px;" trigger="hover"></lord-icon>                </span>
+                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                </a></h3>
+              </hgroup>
+              <div>
+                {% if form.errors %}
+                <p> Your <b>Email</b> and <b>Password</b> didn't match Please try again</p>
+                {% else %}
+                <p>Please, use the following form to log-in:</p>
+                {% endif %}
+  
+                <form action="{% url 'seller_account:login' %}" method="POST">
+                  <div class="input-group mb-3">
+                    
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                     </div>
+                   
+                  <input type="hidden" name="next" value="{{ next }}">
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-block">Login</button>
+                  </div>
+              </form>
+              
+                    <p class="text-center mt-4"> <a href="{% url 'seller_account:password_reset' %}" class='red'>Forgotten your password?</a></p>
+
+        <div>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">Don't Have an account? <a href="{% url 'seller_account:register' %}">Register</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+  {% endblock content %}
+
+
+

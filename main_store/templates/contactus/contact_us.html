@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+{% if sent %}
+
+<div class="alert alert-success" role="alert">
+    <h1 class="alert-heading">E-mail successfully sent!</h4>
+    <h4>E-mail Sent successfully to US</p>
+        <hr>
+</div>
+</div>  
+
+{% else %}
+
+   <!-- Contact Start -->
+   <div class="container-fluid">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Contact Us</span></h2>
+    <div class="row px-xl-5">
+        <div class="col-lg-7 mb-5">
+            <div class="contact-form bg-light p-30">
+                <div id="success"></div>
+                <form name="sentMessage" id="contactForm" novalidate="novalidate" method="POST">
+
+                    <div class="control-group">
+                        {{form}}
+                        {% csrf_token %}
+                    </div>
+                    
+                 
+                    <div>
+                        <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send-Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5 mb-5">
+            <div class="bg-light p-30 mb-3">
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>قسم الشروق، محافظة القاهرة‬ 11837</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>Promo@gmail.com</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>01001690789</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+{% endif %}
+{% endblock content %}
+    
+
+

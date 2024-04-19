@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="content">
+    <div class="general-content" style="padding-left: 202px;">
+        <h1 style="padding-right: 156px;">Welcome to sell on Promo</h1>
+        <p style="padding-right: 185px;">It's no secret: At <b>Promo</b>, we're obsessed with customers. Our customers want a trusted destination where they can purchase a variety of goods - which is what makes sellers like you so important. We are always looking for ways to add value to our customers and be the most customer-focused company on Earth. As an Promo seller, you participate in offering these customers better selection, better prices, and a first-class customer experience.
+        <p style="padding-right: 168px;"><a href="{% url 'seller:download_pdf' %}" target="_blank" class="btn btn-primary">Download e-book</a></p>
+        </div>
+    
+    <div class="content2">
+      <h1>What do you need to get started?</h1><br><br>
+      <div class="reasons" style="padding: 94px;">
+       
+      
+        <div class="non-technical">
+          <ul>
+            <br>
+            <li class="list">1- Bank account number</li>
+            <li class="list">2- Mobile Phone Number</li>
+            <li class="list">3- A valid email address </li>
+            <li class="list">4- Promo seller account </li>
+
+         
+          
+          </ul>
+        </div>
+    </div>
+  </div> 
+    
+    <div class="offer-list">
+      <img src="{% static 'img/promo.png' %}">
+       <div class="level-description">
+         <div class="card" style="margin-bottom: 0px;margin-top: 72px;">
+            <div class="card-header">
+              Let's GO Sell With Promo
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Don't have an Promo seller account yet?</h5>
+              <a href="{% url 'seller_account:register' %}" class="btn btn-primary">Register Now</a>
+            </div>
+          </div>
+
+       </div>
+    </div>
+
+    
+    <div class="final-remarks">
+      <div class="remarks">
+        <h2>This is just the beginning</h2>
+        <p>The moment you sell on Promo is the moment you can start growing your Promo business. Once you launch your business, Promo has tools to help you take your business to the next level (or two).</p>
+        <h2>Promotions and discount coupons</h2>
+        <p>Customers want to save, and promotions are an incentive to make a purchase now. There are three types of promotions: money off, free shipping, and buy one get one free. You can also offer percentage discounts or cash off using digital coupons.</p>
+
+        
+      </div>
+      <img src="{% static 'img/pro.png' %}">
+    </div>
+  </div>
+
+{% endblock content %}
+
+
+

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+ 
+
+
+  <section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            <hgroup>
+                <h1 style="padding-bottom: 100px;margin-bottom: -56px;">Register </h1>
+                <h3 style="padding-bottom: 54px;">Sell With Promo &#128151;</h3>
+              </hgroup>
+
+              <div>
+                
+              <form method='POST'> 
+
+               
+					
+         <div clas="form-rwo">
+            <div class="col form-group">
+                <div class="input-group mb-3">
+                    
+                  {{ user_form.as_p }}
+                  {% csrf_token %}
+                   </div>
+                 
+
+             
+            <div class="form-group">
+                <input type="submit" value='Create my account' class="btn btn-primary btn-block"> 
+            </div> <!-- form-group// --> 
+        </form>
+        <div>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">Have an account? <a href="{% url 'seller_account:login' %}">Log In</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+  {% endblock content %}
+
+
+

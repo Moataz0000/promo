@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'store:product_list' %}">Home</a>
+                    <a class="breadcrumb-item text-dark" href="{% url 'store:products' %}">Stores</a>
+                    <span class="breadcrumb-item active">Products</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <!-- Price Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by price</span></h5>
+                <div class="bg-light p-4 mb-30">
+
+
+                    <form action="{% url 'store:products' %}" method="GET" >
+                        <!-- Minimum value input field -->
+                        <div class="form-group mb-3">
+                            <input type="number" class="form-control" id="price-all" placeholder='10 EG' name="searchpricefrom">
+                        </div>
+                    
+                        <!-- Maximum value input field -->
+                        <div class="form-group mb-3">
+                            <input type="number" class="form-control" id="price-1"  placeholder='100 EG' name="searchpriceto">
+                        </div>
+                          <!-- Submit button -->
+                          {% comment %} <button type="button" class="btn btn-primary btn-sm">Small button</button> {% endcomment %}
+                          <button style="" type="submit" class="btn btn-primary">Apply</button>
+                    </form>
+                </div>
+                <!-- Price End -->
+                
+                <!-- Color Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Categories</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <div class="filter__controls">
+                    {% for c in categories %}
+                    <a href="{{c.get_absolute_url}}" class="form-control" style="color:orange;">{{c.name}}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <!-- Color End -->
+
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+
+                   {% if products %}
+                    {% for product in products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                       
+                        <div class="product-item bg-light mb-4">
+                           
+                            
+                            <div class="product-img position-relative overflow-hidden">
+                                {% if product.image %}
+                                
+                               
+                               <img class="img-fluid w-100" src="{{product.image.url}}" alt="logo" style="height:400px;">
+                               {% else %}
+                               <img class="img-fluid w-100" src="#" alt="logo" style="height:400px;">
+
+
+                               {% endif %}
+                                <div class="product-action">                                    
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate" href="{{ product.get_absolute_url }}">{{ product.name}}</a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    {% if product.stock == 0 %}
+                                    <h5 class="alert-danger">Out Of Stock</h5><h6 class="text-muted ml-2"><del></del></h6>
+                                    {% else %} 
+                                    <h5>{{ product.price}} EG</h5><h6 class="text-muted ml-2"><del>{{ product.old_price }} EG</del></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center mb-1">
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+
+                                    
+                                    <small>(3)</small>
+                                </div>
+                                <a class="h6 text-decoration-none text-truncate" href="{{ product.get_absolute_url }}" >
+                                    <span class="badge badge-pill badge-success">{{ product.seller}}</span></a>
+
+                            </div>
+                        </div>
+                       
+                    </div>
+                  
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-warning d-flex align-items-center" role="alert" style="padding-right: 1107px;">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <div>
+                         <h1> Not Found </h1>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    
+                  
+                    
+                   
+                    
+                   
+                    
+                     
+                    {% comment %} <div class="col-12">
+                        <nav>
+                          <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          </ul>
+                        </nav>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+{% endblock content %}

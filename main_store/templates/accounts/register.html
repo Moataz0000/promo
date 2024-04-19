@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+
+
+{% block content %} 
+
+<div class="register">
+    <div class="container">
+       <div class="row">
+           <div class="col-lg-7 col-md-6">
+                <div class="ditk-inf sup-oi">
+                     <h2 class="w-100">We are the Best <br>E-Commerce System for You</h2>
+                     <ul>
+                        <li><i class="fas fa-check"></i>We Have Very Higt Quality</li>
+                        <li><i class="fas fa-check"></i> You Can find Anything With US </li>
+                     </ul>
+                     
+                 </div> 
+            </div>
+            <div class="col-lg-5 col-md-6 ">
+                <div class="register-box">
+                    <h2> Sign up</h2>
+                    {% include 'includes/alerts.html' %}
+                    <form action="{% url 'accounts:register' %}" method="POST">
+                        {% csrf_token %}
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Fisrt Name</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{ form.first_name }}
+                     </div>
+
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Last Name</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{ form.last_name }} 
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Email Address</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{form.email}}
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Mobile Number</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{form.phone_number}}
+                        </div>
+                    </div>
+                   
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Create Password</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{ form.password }}
+                         </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Confirm Pass</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            {{form.confirm_password}}
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                           
+                        </div>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-outline-warning">Create Account</button>
+                        </div>
+                        {{ form.email.errors }}
+                        {{ form.non_field_errors }}
+                    </div>
+                    </form>
+                </div>
+                <p class="text-center mt-4">Have an account? <a href="{% url 'accounts:login' %}">Log In</a></p>
+            </div>
+       </div>
+    </div>
+</div>
+
+
+{% endblock content %}

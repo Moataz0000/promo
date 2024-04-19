@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Checkout Start -->
+    <div class="container-fluid " >
+        <div class="row px-xl-5 ">
+            <div class="col-lg-8">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
+                <div class="bg-light p-30 mb-5 " style="margin:339px; margin-top:unset;">
+                    <div class="row">
+
+                        <form method="POST" class="order-form" >
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col form-group">
+                                      {{ form.first_name }}
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                      {{ form.last_name }}
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row end.// -->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  {{form.email}}
+                                </div> <!-- form-group end.// -->
+                                <div class="form-group col-md-6">
+                                  {{form.phone}}
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row.// -->
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  {{form.address}}
+                                </div> <!-- form-group end.// -->
+                                <div class="form-group col-md-6">
+                                  {{form.postal_code}}
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row.// -->
+                            <div class="form-row"> 
+                   <div class="form-group col-md-6">
+                    <p>{{form.city}}</p>
+                </div>
+                <div class="form-group col-md-6">
+                    <p>{{form.notes}}</p>
+                </div>
+            </div> <!-- form-group end.// -->
+            <input type="submit" value="Place order" class="btn btn-block btn-primary font-weight-bold py-3">
+        </div>
+                </div>
+            </form>
+
+
+
+                <div class="collapse mb-5" id="shipping-address">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
+                    <div class="bg-light p-30">
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="border-bottom">
+                        <h6 class="mb-3">Products</h6>
+                        <div class="d-flex justify-content-between">
+                            <ul>
+                                
+                                {% for item in cart %}
+                            <li>{{item.product.name}}<span>{{item.quantity}}</span></li>
+
+                            {% endfor %}
+                            <ul>
+                        </div>
+                        <div class="pt-2">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5>Subtotal</h5>
+                                <h5>{{ cart.get_total_price}} EG</h5>
+                            </div>
+                        </div>
+                        {% if cart.coupon %}
+                        <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Discount Code</h5>
+                            <h5 style="color:green;">"{{ cart.coupon.code }}" coupon ({{ cart.coupon.discount }}% off)
+                            </h5>
+                        </div> 
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Discount</h5>
+                            <h5 style="color:red;">{{ cart.get_discount|floatformat:2 }} - EG</h5>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            {% with total_items=cart|length %}
+                            {% if total_items > 0 %}
+                            <h5>Items Amount </h5> 
+                              <h5>{{ total_items }}</h5>
+                            {% elif not order %}
+                            Your cart is empty ): 
+                            {% endif %}
+                            {% endwith %} 
+                        </div>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Tax</h5>
+                            <h5>{{ cart.get_tax }} EG</h5>
+                        </div>
+                    </div>
+                     
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Total Price</h5>
+                            <h5>{{ cart.total_after_discount_with_tax| floatformat:2}} EG</h5>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="pt-2">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5>Tax</h5>
+                        <h5>{{ cart.get_tax }} EG</h5>
+                    </div>
+                </div>
+                <div class="pt-2">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5>Total Price</h5>
+                        <h5>{{ cart.total_after_discount_with_tax| floatformat:2}} EG</h5>
+                    </div>
+                </div>
+            </div>
+
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+
+{% endblock content %}
+
+

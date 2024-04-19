@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+
+
+{% block content %} 
+
+<div class="register">
+    {% if request.GET.command == 'verification' %}
+    
+    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+    Thank you for registering with us. We have sent you a verification email to your email address [{{ request.GET.email }}]
+    <br><br>
+    Already verified? <a href="{% url 'accounts:login' %}">Login</a>
+    </div>
+    
+    {% else %}
+
+    <div class="container">
+       <div class="row">
+           <div class="col-lg-7 col-md-6">
+                <div class="ditk-inf sup-oi">
+                     <h2 class="w-100">We are the Best <br>E-Commerce System for You</h2>
+                     <ul>
+                        <li><i class="fas fa-check"></i>We Have Very Higt Quality</li>
+                        <li><i class="fas fa-check"></i> You Can find Anything With US </li>
+                     </ul>
+                    
+                     
+                 </div> 
+            </div>
+            <div class="col-lg-5 col-md-6 ">
+                <div class="register-box">
+                    <h2>Login</h2>
+                    {% include "includes/alerts.html" %}
+                    <form method="POST" action="{% url 'accounts:login' %}">
+                        {% csrf_token %}
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Enter Email </label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" placeholder="Enter Email" class="form-control form-control-sm" name="email">
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <label for="">Enter Password</label>
+                            <span>:</span>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="password" placeholder="Enter Password" class="form-control form-control-sm" name="password">
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                           
+                        </div>
+                        <div class="col-md-8" style="padding-left: 37px;">
+                            <button type="submit" class="btn btn-outline-warning">Login</button>
+
+                        </div>
+                        <div class="form-group">
+                            <a href="{% url 'accounts:forgotPassword' %}" class="float-right">Forgot password?</a>
+              
+                        </div>
+                    </div>
+                    
+                    </form>
+                </div>
+                <p class="text-center mt-4">Don't have account? <a href="{% url 'accounts:register' %}">Sign up</a></p>
+            </div>
+       </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

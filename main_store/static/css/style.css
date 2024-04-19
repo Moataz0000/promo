@@ -1,0 +1,163 @@
+
+
+.custom-navbar {
+  background-color: #c7832d;
+}
+
+.custom-prim {
+  background-color: #c7832d;
+}
+
+html {
+  font-family: sans-serif;  /* type of font*/
+  line-height: 1.15;    /*  التحكم في التباعد بين أسطر */
+ 
+}
+
+/* عرض العناصر بشكل كتلة */
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400; /* سمك الخط*/
+  line-height: 1.5;
+  color: #6C757D;
+  text-align: left;   /* محاذاة النص إلى اليسار */
+  background-color: #F5F5F5;
+}
+
+
+hr {
+  box-sizing: content-box;  /*يحدد نموذج التغليف*/
+  height: 0;   /* يتم إخفاء العنصر بالطول ولا يظهر */
+  overflow: visible;  /* لن يتم قص أو إخفاءy */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;  /*يحدد التباعد العلوي لعناصر */
+  margin-bottom: 0.5rem;  /*التباعد السفلي لعناصر*/
+}
+
+p {
+  margin-top: 5;
+  margin-bottom: 1rem;  
+}
+
+address {
+  font-style: normal;
+}
+
+dt {
+  font-weight: 700;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+a:hover{
+  color: #FFD333;
+  text-decoration: none;  /* إزالة التأثير الافتراضي */
+  background-color: transparent;  /* جعل لون خلفية الروابط شفافًا، */
+}
+
+
+
+
+p{
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+}
+
+
+img {
+  vertical-align: middle; /* توسيط الصورة عموديًا  */
+  border-style: none;
+}
+
+svg {
+  overflow: hidden;  /* خفي أي محتوى يتجاوز حجم العنصر الرئيسي */
+  vertical-align: middle;
+}
+
+/*  التنسيق لعنوان الجدول وضعه في أعلى الجدول*/
+/* caption {
+  padding-top: 0.75rem; 
+  /* تعيين هوامش علوية */
+  /*padding-bottom: 0.75rem;
+  color: #6c757d;
+} */
+
+/* يتم عرضه كمربع على حدود النص */
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+
+button {
+  border-radius: none;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button,
+input {
+  overflow: visible; /*حدد كيفية التعامل مع المحتوى الزائد في العنصر */
+
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+
+
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+}
+
+
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;  /* حدد كيفية تغليف العناصر في حالة عدم كفاية المساحة */
+  margin-right: -5px; /* يضيف هوامش سلبية للحواف اليمنى */
+  margin-left: -5px;
+}
+
+
+

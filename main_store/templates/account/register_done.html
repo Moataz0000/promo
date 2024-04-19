@@ -1,0 +1,17 @@
+{% extends "base2.html" %}
+
+
+
+{% block seller %}
+
+<h1>Welcome {{ new_user.first_name }}</h1><br>
+<div class="card-body">
+    <h5 class="card-title">Logout</h5>
+    <p class="card-text">You have been successfully logged out.You can 
+    <a href="{% url 'seller_account:login' %}" class="btn btn-primary">Log-in again</a>
+  </div>
+
+{% endblock seller %}
+
+
+

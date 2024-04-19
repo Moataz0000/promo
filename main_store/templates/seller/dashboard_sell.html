@@ -1,0 +1,87 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+{% block seller %}
+
+{% include "n_f_dash/status.html" %}
+
+
+<div class="card text-center">
+  <div class="card-header">
+    Orders
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Promo E-Commerce</h5>
+    <p class="card-text"><div class="col-md-12">
+      <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Order-ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Product</th>
+
+              <th scope="col">Address</th>
+              <th scope="col">Status</th>
+              <th scope="col">Price</th>
+              <th scope="col">Date</th>
+              <th scope="col">Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% if orders %}
+            {% for order in orders %}
+            
+            <tr>
+              <th scope="row">{{ order.id }}</th>
+              <td>{{order.order.first_name}}</td>
+              <td>{{order.product.name}}</td>
+
+              <td>{{order.order.address}}</td>
+
+              <td> <button type="button" {% if order.status == 'SHIPPING' %} class="btn btn-success btn-sm" {% elif order.status == 'PENDING' %} class="btn btn-warning btn-sm" {% elif order.status == 'REJECTION' %} class="btn btn-danger btn-sm"{% endif %} >{{order.status}}</button></td>
+
+              <td>{{order.price}} EG</td>
+              <td>{{order.order_date}}</td>
+              {% comment %} <form method="post" action="{% url 'seller:order_delete' order.id %}"> {% endcomment %}
+                {% csrf_token %}
+                <td><a href="{% url 'seller:order_delete' order.id %}" class="btn btn-outline-danger">Remove</a></td>
+
+            </form>
+            
+            </tr>
+            {% endfor %}
+          
+          
+
+          </tbody>
+        
+
+        </table>
+        {% else %}
+        <div class="alert alert-dark" role="alert">
+          <h1>You Not Have Orders</h1>
+        </div>
+
+        {% endif %}
+       
+      </div></p>
+    
+  </div>
+  <div class="card-footer text-muted">
+    Promo - Ecommerce 
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+
+{% endblock seller %}
+

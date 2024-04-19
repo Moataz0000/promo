@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="text-center">
+<div class="alert alert-success"  >
+    <h4 class="alert-heading">Thank You (:</h4>
+    <p>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</p>
+    <hr>
+    <p class="mb-0">We're So Happy To You bought From US (:</p>
+    <a href="{% url 'store:products' %}" class="btn btn-outline-success" ><span class="text">View Products</span><i class="fas fa-eye"></i></a>
+  </div>
+</div>
+{% endblock content %}           
+
+
+
+
+{% comment %} <a href="{% url 'store:products' %}" class="btn btn-outline-primary"><span class="text">View Products</span><i class="fas fa-eye"></i></a> {% endcomment %}

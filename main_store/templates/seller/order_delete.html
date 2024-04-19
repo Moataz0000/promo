@@ -1,0 +1,37 @@
+{% extends "base2.html" %}
+
+
+{% include "n_f_dahs/status.html" %}
+
+
+
+{% block seller %}
+
+<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+    <article class="card-body">
+      <hgroup>
+          <h1 style="padding-bottom: 100px;margin-bottom: -56px; padding-left:121px;" class="center">Order delete </h1>
+        </hgroup>
+  
+        <div>
+  
+    <form  method="POST" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <div class="cart-body">
+        <p> Do you need delete Order-ID ? <b>{{order_id}}</b></p>
+  
+      </div>
+  
+      <div><button type="submit" class="btn btn-outline-danger" style="margin-left:42%;margin-bottom: 12px;">Delete</button></div>
+     <div> <a href="{% url 'seller:dashboard' %}" class="btn btn-outline-success" style="margin-left:42%;">Cancel</a></div>
+
+    </form>
+  </div>
+  </div>
+  </div>
+  
+
+{% endblock seller %}
+
+
+

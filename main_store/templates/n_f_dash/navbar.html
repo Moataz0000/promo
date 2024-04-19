@@ -1,0 +1,72 @@
+{% load static %}
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'seller:dashboard' %}" style="padding-left: 28px;padding-bottom: 33px;"><b>Promo-Dashboard<b>
+
+    </b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'seller:dashboard' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'seller:products'  %}">Products</a>
+        </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Actions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'seller:analytics' %}">Analytics</a>
+            </div>
+          </li>
+          {% if request.user.is_authenticated %}
+
+          <li class="nav-item dropdown" style="padding-left:1310px">
+            <h6 style="color:white;"> Hello {{ request.user.username|default:request.user.username }}</h6>
+
+
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Actions
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item selected" href="{% url 'seller_account:dashboard' %}">Profile</a>
+              <a class="dropdown-item" href="{% url 'seller_account:logout' %}">Logout</a>
+              <a class="dropdown-item" href="{% url 'seller_account:password_change' %}">Change Password</a>
+
+
+
+
+            </div>
+
+            {% else %}
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'seller_account:register' %}">Register</a>
+              <a class="dropdown-item" href="{% url 'seller_account:login' %}">Login</a>
+
+            </div>
+            {% endif %}
+          </li>
+        </div>
+       
+      </ul>
+     
+    </div>
+    
+  </nav>
+  <script>
+    $(document).ready(function(){
+        // Initialize Bootstrap dropdowns
+        $('.dropdown-toggle').dropdown();
+    });
+</script>

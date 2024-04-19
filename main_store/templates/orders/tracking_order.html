@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% if orders %}
+<div class="container px-1 px-md-4 py-5 mx-auto">
+    {% for order in orders %}
+    <div class="card">
+        <div class="row d-flex justify-content-between px-3 top">
+            
+            <h3>Order Details</h3>
+            <ul  class="text-left">
+                <hr>
+                <li>  <h5>Product Name: <span class="text-alert-primary font-weight-bold">{{ order.product.name }}</span></li>
+                <li><h5>ORDER-ID: <span class="text-alert-primary font-weight-bold">{{ order.id }}</span></h5></span></h5></li>
+                <li><h5>Status: <span class="text-alert-primary font-weight-bold green">{{ order.get_status_display  }}</span></h5></li>
+                <li><h5>Created-Date: <span class="text-alert-primary font-weight-bold">{{order.order_date}}</span></h5></li>
+
+                
+            </ul>
+      
+           
+        </div>
+        
+        <!-- Add class 'active' to progress -->
+        <div class="row d-flex justify-content-center" style="padding-left: 400px;">
+            <div class="col-12">
+                
+                
+                
+                
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container px-1 px-md-4 py-5 mx-auto">
+    <div class="card">
+        <div class="row d-flex justify-content-between px-3 top">
+            <div class="d-flex">
+                <h5>ORDER-ID:<span class="text-alert-primary font-weight-bold">order ID is Not Fount </span></h5>
+            </div>
+            <div class="d-flex flex-column text-sm-right">
+                <p class="mb-0">Created-Date: <span>Not Found</span></p>
+            </div>
+        </div>
+        <!-- Add class 'active' to progress -->
+
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+{% endblock content %}
+
+
+
+

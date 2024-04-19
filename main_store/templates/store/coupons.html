@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="padding-left: 45%;" class="brown card-title">Coupons</h1>
+<table class="table table-sm table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Coupon Name</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Valid Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+   
+    </thead>
+    
+    <tbody>
+      {% for coupon in coupons %}
+      <tr>
+        <th scope="col">{{coupon.code}}</th>
+        <th scope="col">{{coupon.discount}}%</th>
+        <th scope="col">{{coupon.valid_from}}</th>
+        <th scope="col">{{coupon.valid_to}}</th>
+      </tr>
+      {% endfor %}
+     
+    
+    </tbody>
+  </table>
+
+
+{% endblock content %}
+
+
+
+

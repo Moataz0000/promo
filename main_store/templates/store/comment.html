@@ -1,0 +1,13 @@
+
+{% block content %}
+
+{% if comment %}
+<h2>Your comment has been added.</h2>
+<p><a href="{{ product.get_absolute_url }}">Back to the Product</a></p>
+{% else %}
+{% include "includes/comment_form.html" %}
+{% endif %}
+
+{% endblock content %}
+
+

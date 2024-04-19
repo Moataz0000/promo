@@ -1,0 +1,64 @@
+{% load static %}
+<br><br>
+<div class="row">
+    <div class="col">
+        <div class="col-md" style="padding-left: 12px;">
+            <div class="card text-center text-white mb-3" id="total-order">
+                <div class="card-header">
+                    <h5 class="card-title text-dark">Total Orders</h5>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary"><b>{{ orders.count }}</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md" style="padding-left: 12px;">
+            <div class="card text-center text-white mb-3" id="total-order">
+                <div class="card-header">
+                    <h5 class="card-title text-dark">Orders Shipping</h5>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="btn btn-success"><b>{{ shipping_count }}</b></a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md" style="padding-left: 12px;">
+            <div class="card text-center text-white mb-3" id="total-order">
+                <div class="card-header">
+                    <h5 class="card-title text-dark">Orders Rejection</h5>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="btn btn-danger"><b>{{ rejections_count.count }}</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md" style="padding-right: 12px;">
+            <div class="card text-center text-white mb-3" id="order-pending">
+                <div class="card-header">
+                    <h5 class="card-title text-dark">Orders Pending</h5>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="btn btn-warning"><b>{{ processing_count }}2</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

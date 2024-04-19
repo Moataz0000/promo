@@ -1,0 +1,24 @@
+{% extends "base2.html" %}
+
+
+{% block seller %}
+
+<br>
+
+
+<div class="text-center">
+    <div class="alert alert-success"  >
+        <h4 class="alert-heading">Product Added (:</h4>
+        <p class="mb-0">We're So Happy To You sell With US (:</p>
+        <br>
+        <a href="{% url 'store:products' %}" class="btn btn-outline-success" target="_blank"><span class="text">View Products</span><i class="fas fa-eye"></i></a>
+        <a href="{% url 'seller:products' %}" class="btn btn-outline-primary"><span class="text">Back Home</span><i class="fas fa-eye"></i></a>
+
+      </div>
+    </div>
+
+{% endblock seller %}
+
+
+
+

@@ -1,0 +1,102 @@
+{% extends "base2.html" %}
+
+
+{% block seller %}
+
+{% include "n_f_dash/status.html" %}
+
+
+
+
+<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+  <article class="card-body">
+    <hgroup>
+        <h1 style="padding-bottom: 100px;margin-bottom: -56px; padding-left:121px;" class="center">Add Product </h1>
+      </hgroup>
+
+      <div>
+
+  <form  method="POST"  >
+    <div class="cart-body">
+      {{form.as_p}}
+     {% csrf_token %}
+
+    </div>
+
+    </div class="cart-footer">
+    <button type="submit" class="btn btn-outline-primary" style="margin-left:38%;">Add Product</button>
+</div>
+  </form>
+</div>
+</div>
+</div>
+
+<br><br><br>
+
+
+<p>------------------------------------------------------------------------------------------------------------------------------------<b>My - Products</b>-------------------------------------------------------------------------------------------------------------------------------------</p>
+
+
+<!-- Products Start -->
+<div class="container-fluid pt-5 pb-3">
+  <div class="row px-xl-5">
+    
+   
+      {% for product in seller_products %}
+      <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+          <div class="product-item bg-light mb-4">
+              
+              <div class="product-img position-relative overflow-hidden">
+                  {% if product.image %}
+  <!-- Display the image -->
+  <img class="img-fluid w-100" src="{{product.image.url}}" alt="" style="height:400px">
+  {% else %}
+  <!-- Display a placeholder or alternative content -->
+  No image available
+{% endif %}
+
+              </div>
+          
+              <div class="text-center py-4">
+                  <a class="h6 text-decoration-none text-truncate" href="{{ product.get_absolute_url }}">{{ product.name}}</a>
+                  <div class="d-flex align-items-center justify-content-center mt-2">
+                      {% if product.stock == 0 %}
+                      <h5 class="alert-danger red">Out Of Stock</h5><h6 class="text-muted ml-2"><del></del></h6>
+                      {% else %} 
+                      <h5>{{ product.price}} EG </h5><h6 class="text-muted ml-2"><del> {{ product.old_price }} EG</del></h6>
+                      {% endif %}
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center mb-1">
+                  <div>  <a href="{% url 'seller:delete' product.id %}" class="btn btn-outline-danger" style="margin-right: 26px;">Remove</a></div>
+
+                   <div> <a href="{% url 'seller:update' product.id  %}"  class="btn btn-outline-warning">Update</a></div>
+
+
+                  </div><br>
+                <b>Date</b>:   {{product.created}}<br><br>
+                <a href="#" class="btn btn-primary">{{ product.seller }}</a>
+
+                {% comment %} <h3 ><a href="#" class="badge badge-secondary"></a></h3> {% endcomment %}
+
+                
+
+
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!-- Products End -->
+
+   
+    
+ 
+
+
+
+
+
+
+  
+{% endblock %}
